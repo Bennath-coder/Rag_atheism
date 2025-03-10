@@ -1,0 +1,5 @@
+datasets : Cardiffnlp/tweet_eval
+tasks : Text classification
+modalities : Text
+Files and versions : stance_atheism
+models : openai-community/GPT-2
