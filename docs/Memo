@@ -1,0 +1,332 @@
+# CONFIGURER MON ESPACE DE TRAVAIL (Git bash)
+
+Nath@DESKTOP-S9622G3 MINGW64 ~
+$ python -m venv rag_env
+
+Nath@DESKTOP-S9622G3 MINGW64 ~
+$ source rag_env/Scripts/activate
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~
+$ git clone git@github.com:Bennath-coder/rag_atheism.git
+Cloning into 'rag_atheism'...
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (4/4), done.
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~
+$ cd rag_atheism
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean        
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (main)
+$ pip install cookiecutter-data-science
+Collecting cookiecutter-data-science...
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (main)
+$ ccds
+You've downloaded C:\Users\Nath\.cookiecutters\cookiecutter-data-science before. Is it okay to delete and re-download it? [y/n] (y): y
+project_name (project_name): Rag Project Atheism
+repo_name (rag_project_atheism): rag_project_atheism_1.0
+module_name (rag_project_atheism): # pas de nom renseigné car on ne cherche pas à créer un module
+author_name (Your name (or your organization/company/team)): nathalie-pizon
+description (A short description of the project.): Avoir à disposition un LLM capable de répondre à nos questions sur une BDD spécifique
+python_version_number (3.10): 3.8.8
+Select dataset_storage (1)
+Select environment_manager (5)
+Select dependency_file (1)
+Select pydata_packages (2)
+Select open_source_license (1)
+Select docs (2)
+Select include_code_scaffold (2)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (main)
+$ git branch
+* main
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (main)
+$ git switch -c ng_branch
+Switched to a new branch 'ng_branch'
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git branch
+  main
+* ng_branch
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git status
+On branch ng_branch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Makefile
+        __init__.py
+        docs/
+        models/
+        notebooks/
+        pyproject.toml
+        references/
+        reports/
+        requirements.txt
+        setup.cfg
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git add .
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git commit -m "add rag_project_atheism structure"
+[ng_branch 910ceb9] add rag_project_atheism structure
+ 13 files changed, 193 insertions(+), 15 deletions(-)
+ create mode 100644 Makefile
+ create mode 100644 __init__.py
+ create mode 100644 docs/.gitkeep
+ create mode 100644 models/.gitkeep
+ create mode 100644 notebooks/.gitkeep
+ create mode 100644 pyproject.toml
+ create mode 100644 references/.gitkeep
+ create mode 100644 reports/.gitkeep
+ create mode 100644 reports/figures/.gitkeep
+ create mode 100644 requirements.txt
+ create mode 100644 setup.cfg
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git push --set-upstream origin ng_branch
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (11/11), 3.35 KiB | 1.67 MiB/s, done.
+Total 11 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'ng_branch' on GitHub by visiting:
+remote:      https://github.com/Bennath-coder/rag_atheism/pull/new/ng_branch
+remote:
+To github.com:Bennath-coder/rag_atheism.git
+ * [new branch]      ng_branch -> ng_branch
+branch 'ng_branch' set up to track 'origin/ng_branch'.
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ pip install langchain-community
+Collecting langchain-community...
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ pip install sentence-transformers
+Collecting sentence-transformers...
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ pip install datasets
+Collecting datasets...
+
+# (python rag_env 3.11.9) '1.0-np-rag_project_atheism'************************************************
+# HuggingFace et chargement des données
+
+from install datasets langchain_community.document_loaders import HuggingFaceDatasetLoader # permet de télécharger un dataset HuggingFace
+from langchain_community.embeddings import HuggingFaceEmbeddings # on récupère un embedding adapté aux données HuggingFace
+from langchain.indexes.vectorstore import VectorstoreIndexCreator # permet à Langchain de transformer les données en vecteurs
+
+dataset_name = "tweet_eval"
+page_content_column = "text"
+name = "stance_atheism"
+loader = HuggingFaceDatasetLoader(dataset_name, page_content_column, name)
+
+embeddings = HuggingFaceEmbeddings()
+index = VectorstoreIndexCreator(embedding=embeddings).from_loaders([loader])
+
+print(type(index))
+
+# Git bash*******************************************************************
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHheism (ng_branch)
+$ git status
+On branch ng_branch
+  (use "git add <file>..." to include in what 
+will be committed)
+        notebooks/1.0-np-rag_project_atheism.ipynb
+
+nothing added to commit but untracked files present (use "git add" to track)
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git add .
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git commit -m "add my first notebook"       
+[ng_branch 98653b1] add my first notebook     
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 notebooks/1.0-np-rag_project_atheism.ipynb
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads       
+Compressing objects: 100% (3/3), done.        
+Writing objects: 100% (3/3), 345 bytes | 345.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:Bennath-coder/rag_atheism.git
+   910ceb9..98653b1  ng_branch -> ng_branch   
+(rag_env)
+
+# Git bash*******************************************************************
+# Choix du LLM et clé API
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ pip install python-dotenv
+Requirement already satisfied: python-dotenv in c:\users\nath\desktop\rag_atheism_np\rag_env\lib\site-packages 
+(1.0.1)
+
+[notice] A new release of pip is available: 24.0 -> 25.0.1      
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(rag_env)
+
+# (python rag_env 3.11.9)****************************************************
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+output = True # le code permet de récupérer les informations directement dans le fichier .env, True signifiant que le code fonctionne correctement
+
+api_key = os.environ["HUGGINGFACEHUB_API_TOKEN"] # os.environ permet de récupérer les variables du fichier .env, ici on récupère la clé api(de cette manière la clé api est sécurisée dans un fichier .env à part)
+# print(api_key) on n'affiche pas la clé API sinon le git push ne fonctionne pas 
+
+# requêter le modèle
+from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
+hf = HuggingFacePipeline.from_model_id(
+    model_id="openai-community/gpt2",
+    task="text-generation",
+    device=-1,
+    pipeline_kwargs={"max_new_tokens": 50}
+)
+
+def generate_answer(query):
+    result = index.query(query, llm=hf)
+    target_string = "Helpful Answer:"
+    return result[result.find(target_string)+len(target_string):]
+
+query = "Generate a tweet about atheism"
+generate_answer(query)
+
+query = "What is atheism"
+generate_answer(query)
+
+# Git bash*******************************************************************
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git status
+On branch ng_branch
+Your branch is up to date with 'origin/ng_branch'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)   
+        modified:   notebooks/1.0-np-rag_project_atheism.ipynb
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git add .
+warning: in the working copy of 'notebooks/1.0-np-rag_project_atheism.ipynb', LF will be replaced by CRLF the next time Git touches it
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git commit -m "add llm"
+[ng_branch 216e2ec] add llm
+ 1 file changed, 218 insertions(+)
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git push
+Everything up-to-date
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git branch
+  main
+* ng_branch
+(rag_env)
+
+# Demo Gradio (Git bash)****************************************************
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ pip install gradio
+Collecting gradio...
+
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ pip freeze > requirements.txt
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git status
+On branch ng_branch
+Your branch is up to date with 'origin/ng_branch'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   requirements.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        notebooks/1.0-np-demo_gradio.ipynb
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git add .
+warning: in the working copy of 'notebooks/1.0-np-demo_gradio.ipynb', LF will be replaced by CRLF the next time Git touches it
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git commit -m "update requirements"
+[ng_branch 4ea04a3] update requirements
+ 2 files changed, 148 insertions(+), 11 deletions(-)
+ create mode 100644 notebooks/1.0-np-demo_gradio.ipynb
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git push
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.73 KiB | 1.73 MiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:Bennath-coder/Rag_atheism.git
+   dc777b5..4ea04a3  ng_branch -> ng_branch
+(rag_env)
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git status
+On branch ng_branch
+Your branch is up to date with 'origin/ng_branch'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    notebooks/1.0-np-demo_gradio.ipynb
+        modified:   notebooks/1.0-np-rag_atheism.ipynb
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git add .
+warning: in the working copy of 'notebooks/1.0-np-rag_atheism.ipynb', LF will be replaced by CRLF the next time Git touches it
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git commit -m "add gradio app"
+[ng_branch 3e17a74] add gradio app
+ 2 files changed, 258 insertions(+), 18 deletions(-)
+ delete mode 100644 notebooks/1.0-np-demo_gradio.ipynb
+(rag_env) 
+Nath@DESKTOP-S9622G3 MINGW64 ~/Desktop/RAG_ATHEISM_NP/rag_atheism (ng_branch)
+$ git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 2.63 KiB | 1.31 MiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:Bennath-coder/Rag_atheism.git
+   4ea04a3..3e17a74  ng_branch -> ng_branch
+(rag_env)
